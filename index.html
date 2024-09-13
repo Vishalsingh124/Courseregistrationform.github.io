@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forms</title>
+    <style>
+      body{
+        background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(198,148,233,1) 100%);
+      }
+
+
+      p{
+        display: none;
+      }
+
+
+      /* css is case sensitive */
+      /* automatically take as inline */
+      input:hover+p
+      {
+        display: inline;
+        background-color: greenyellow;
+        font-family: monospace;
+      }
+
+      /* pseudo class checked */
+      input[type="radio"]:checked
+      {
+        height: 20px;
+        width: 20px;
+      }
+
+
+      /* if a element to be changed it should be in tag like male size it is just a text so it should be placed in tag */
+      input[type="radio"]:checked+span
+      {
+        color: red;
+        font-weight: bolder;
+      }
+
+
+      /* form boder */
+      form{
+        border: dashed black;
+      }
+      fieldset{
+        border: solid;
+      }
+
+
+      /* such field tht is compulsary required */
+      input:required
+      {
+        border: solid red;
+      }
+      
+      input:optional{
+        border: dashed green;
+      }
+
+      input :disabled{
+        border: dotted cyan;
+      }
+
+      input:focus{
+        /* inset of active we can use focus because active is temperory */
+        background-color: yellow;
+      }
+
+
+      /* display image if the email is wright or else wrong */
+      img{
+        display: none;
+      }
+
+      input[type="email"]:focus:valid ~ img#valid{
+        display: inline;
+      }
+
+      input[type="email"]:focus:invalid ~ img#invalid{
+        display: inline;
+      }
+
+
+      
+
+    </style>
+  </head>
+  <body>
+    <h2>Course Registration Form</h2>
+
+    <fieldset>
+      <legend>Personal details</legend>
+      <form action="/response.html">
+      <table>
+        <tr>
+          <td><label>Name</label></td>
+          <td><input type="text" name="Name" size="15" required/><p>Enter your First name</p><br /></td>
+        </tr>
+
+        <tr>
+          <td><label>Surname</label></td>
+          <td><input type="text" disabled/> <br /></td>
+        </tr>
+        <tr>
+          <td><label>Age</label></td>
+          <td><input type="number" name="num" min="18" max="100" required /> <br /></td>
+        </tr>
+        <tr>
+          <td><label>Mobile number</label></td>
+          <td><input type="tel" /> <br /></td>
+        </tr>
+
+        <tr>
+          <td><label>Email</label></td>
+          <td><input type="email" required />
+            <img id="valid" src="/checklist.png" height="15px" width="15px">
+          <img id="invalid" src="/remove.png" height="15px" width="15px"></td>
+          
+        </tr>
+
+        <tr>
+          <td><label>Password</label></td>
+          <td><input type="password" min="8" minlength="8" /> <br /></td>
+        </tr>
+
+        <tr>
+          <td><label>Confirm Password</label></td>
+          <td><input type="password" /> <br /></td>
+        </tr>
+
+        <tr>
+          <td><label>DOB</label></td>
+          <td><input type="date" /> <br /></td>
+        </tr>
+        <tr>
+          <td><label>MOD</label></td>
+          <td><input type="text" name="mod" value="ONLINE" readonly/> <br /></td>
+        </tr>
+
+        <tr>
+          <td><label>Gender</label></td>
+          <td>
+            <!-- In the same td for allignment -->
+            <input type="radio" name="gender" value="Male"/>
+            <span>Male</span>
+            <input type="radio" name="gender" value="Female"/>
+            <span>Female</span>
+            <input type="radio" name="gender" value="Custom"/>
+            <span>Custom</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td><label>Select Country</label></td>
+          <td>
+            <select name="select country">
+              <option value="IND">INDIA</option>
+              <option value="USA">USA</option>
+              <option value="UK">UK</option>
+            </select>
+            <br />
+          </td>
+        </tr>
+
+        <!-- <tr>
+          <td><label>Upload Picture</label><br /></td>
+          <td><input type="file" /></td>
+        </tr>
+        <td><input type="reset" /></td> -->
+        
+      </table>
+    </fieldset>
+    <input type="submit" style="margin-top: 20px;" />
+     <legend>Course Details</legend>
+    <fieldset>
+      <label for="">Select Course</label><br />
+      <select name="select course" id="">
+        <option value="jfsw">JAVA FULL STACK</option>
+        <option value="pfsw">PYTHON FULL STACK</option>
+        <option value="dw">DATA BASE</option>
+      </select>
+      <br />
+      <label for="">Delivery Mode</label>
+       <input type="checkbox" name="Delivery" value="ON" /> ONLINE 
+      <input type="checkbox"  name="Delivery" value="OFF"/> OFLINE <br /> 
+      <input type="radio" name="Delivery" value="ON" /> ONLINE 
+      <input type="radio"  name="Delivery" value="OFF" /> OFLINE <br />
+      <label for="">Comments</label> <br />
+      <textarea rows="4" cols="50"></textarea> <br />
+    </fieldset>
+    <br />
+    
+  </form>
+  </body>
+</html>
